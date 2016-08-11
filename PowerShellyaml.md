@@ -7,7 +7,7 @@ In this post, we'll take it around the block.
 ## Hello YAML
 Key value pairs are easy, and we get a PowerShell object with property names.
 
-```
+```powershell
 @"
 receipt: Purchase Invoice
 date:    2016-08-06
@@ -24,7 +24,7 @@ Now add an `items` property that creates an array. Use **-** to create a collect
 
 **Note**: YAML uses white space to indicate scoping of items
 
-```
+```powershell
 @"
 receipt: Purchase Invoice
 date:    2016-08-06
@@ -44,7 +44,7 @@ Purchase Invoice 2016-08-06 {pens, pencils}
 ## Let's Get Complicated
 Multi-nesting. Here we have a `Purchaser` with a `MailingAddress` and a `State`. Try to represent that using `PSCustomObject` and a `HashTable`.
 
-```
+```powershell
 $r = @"
 Purchaser :
     - Name : John
@@ -73,7 +73,7 @@ Let's introduce the `Data` class, cast `$r` to it, and print out the `Purchaser.
 This buys us some intellisense when we type `([Data]$r).` but we want some more saftey.
 
 
-```
+```powershell
 class Data {
     $Purchaser
 }
@@ -94,7 +94,7 @@ Notice, we *type* the `$Purchaser` variable in the `Data` class as an array of P
 
 We also added Jane as and incorrectly specifed `AgeX` instead of `Age`.
 
-```
+```powershell
 class Purchaser {
     $Name
     $Age
